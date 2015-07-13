@@ -1,15 +1,16 @@
 body {
-    margin: 10px;
+    margin: auto;
     font-family: "Open Sans",sans-serif;
     line-height: 1.5;
     color: #4D4E53;
+    padding: 1em;
+    max-width: 60em;
 }
 
 h1 {
-    background-image: url('/img/mdn_logo.png');
+    background-image: url("../img/mdn_logo.png");
     background-repeat: no-repeat;
-    background-position: 0 0;
+    background-position: left center;
     background-size: 50px 50px;
-    padding: 10px 0 0 0;
-    height: 50px;
+    padding: 0 0 0 70px;
 }
