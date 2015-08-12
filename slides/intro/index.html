@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+
+		<!-- Mozilla/Firefox OS theme -->
+		<link rel="stylesheet" href="css/theme/moz-dark.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<!-- Intro -->
+				<section>
+					<h1>MDN Content Kits</h1>
+					<h3>Open-Source Teaching Resources</h3>
+				</section>
+
+				<section>
+					<h1>Service Worker</h1>
+					<h4>Introduction</h4>
+				</section>
+
+	            <section>
+	                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 245px; height: auto;">
+	                    <div class="sl-block-content">
+	                        <h2>First, there were AppCache</h2>
+	                    </div>
+	                </div>
+	                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 328px; height: auto;">
+	                    <div class="sl-block-content">
+	                        <h4>and appcache was a douchebag</h4>
+	                    </div>
+	                </div>
+	            </section>
+
+
+	            <section>
+	                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;">
+	                    <div class="sl-block-content">
+	                        <h2>
+	                            <span style="font-size:56px">...AND THEN, THE</span> SERVICE WORKER
+	                            <span style="font-size:56px">COMETH</span>
+	                        </h2>
+	                    </div>
+	                </div>
+	            </section>
+	            <section class="stack">
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;">
+	                        <div class="sl-block-content">
+	                            <h2>Modern web api
+	                                <span style="font-size:56px">s</span> 101
+	                            </h2>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 246px; height: auto;">
+	                        <div class="sl-block-content">
+	                            <h2>
+	                                <a href="https://promisesaplus.com/" target="_blank">promise
+	                                    <span style="font-size:56px">s</span>
+	                                </a>
+	                            </h2>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 515px;" data-block-type="text" class="sl-block">
+	                        <div style="z-index: 11;" class="sl-block-content">
+	                            <p>
+	                                <span style="font-size:20px">
+	                                    <a href="http://fr.slideshare.net/domenicdenicola/promises-promises" target="_blank">Promises introduction - Domenic Denicola</a>
+	                                </span>
+	                            </p>
+	                        </div>
+	                    </div>
+	                    <div style="min-width: 30px; min-height: 30px; width: 398px; height: 429px; left: 60px; top: 70px;" data-block-type="code" class="sl-block">
+	                        <div style="z-index: 12; font-size: 75%;" class="sl-block-content">
+	                            <pre class="javascript">
+<code>
+function myAsyncFunction(input, callback) {
+    var myThing = doMyThing(input);
+
+    doMyThing.oncomplete = callback;
+}
+
+function nextAsyncFunction(secondInput, callback) {
+    var myOtherThing =
+        doMyOtherThing(secondInput);
+
+    myOtherThing.onComplete = callback;
+}
+
+myAsyncFunction(1, function(result) {
+    nextAsyncFunction(result,
+        function(secondresult) {
+            console.log(secondresult);
+        }
+    );
+});
+</code>
+</pre>
+	                        </div>
+	                    </div>
+	                    <div style="min-width: 30px; min-height: 30px; width: 387px; height: 420px; left: 493px; top: 79px;" data-block-type="code" class="sl-block">
+	                        <div style="z-index: 13; font-size: 75%;" class="sl-block-content">
+	                            <pre><code>function myAsyncFunction(input) {
+	    var myThing = doMyThing(input);
+
+	    return doMyThing.promise;
+	}
+
+	function nextAsyncFunction(secondInput) {
+	    var myOtherThing =
+	        doMyOtherThing(secondInput);
+
+	    return myOtherThing.promise;
+	}
+
+	myAsyncFunction(1)
+	    .then(nextAsyncFunction)
+	    .then(function(secondresult) {
+	        console.log(secondresult);
+	    });</code></pre>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;">
+	                        <div class="sl-block-content">
+	                            <h2>
+	                                <a href="https://fetch.spec.whatwg.org/" target="_blank">
+	                                    <span style="font-size:56px">the</span> Fetch api
+	                                </a>
+	                            </h2>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 515px;" data-block-type="text" class="sl-block">
+	                        <div data-has-custom-html="" style="z-index: 11;" class="sl-block-content">
+	                            <p>
+	                                <span style="font-size:20px">
+	                                    <a href="https://fetch.spec.whatwg.org" target="_blank">WhatWG Fetch API</a> polyfill on
+	                                    <a href="https://github.com/github/fetch" target="_blank">GitHub</a> &amp;
+	                                    <a href="https://www.npmjs.com/package/whatwg-fetch" target="_blank">NPM</a>
+	                                </span>
+	                            </p>
+	                        </div>
+	                    </div>
+	                    <div style="min-width: 30px; min-height: 30px; width: 438px; height: 429px; left: 60px; top: 70px;" data-block-type="code" class="sl-block">
+	                        <div style="z-index: 12; font-size: 75%;" class="sl-block-content">
+	                            <pre class="javascript">
+	                                <code>
+	var r = new XMLHttpRequest();
+
+	r.open("POST", "/api/users", true);
+
+	r.onreadystatechange = function () {
+	    if (r.readyState != 4) return;
+
+	    if (r.status != 200) {
+	        console.log("Request failed!");
+	    }
+
+	    console.log("Success: " + r.responseText);
+	};
+
+	r.setRequestHeader("Content-Type", "application/json");
+
+	r.send('{"name: "Flaki", "login": "slsoftworks" }');</code></pre>
+	                        </div>
+	                    </div>
+	                    <div style="min-width: 30px; min-height: 30px; width: 355px; height: 420px; left: 525px; top: 79px;" data-block-type="code" class="sl-block">
+	                        <div style="z-index: 13; font-size: 75%;" class="sl-block-content">
+	                            <pre><code>
+	fetch('/api/users', {
+
+	  method: 'post',
+
+	  headers: {
+	    'Content-Type': 'application/json'
+	  },
+
+	  body: JSON.stringify({
+	    name: 'Flaki',
+	    login: 'slsoftworks',
+	  })
+
+	}).then(function(result) {
+	    console.log("Success: " + result);
+
+	}).catch(function(error) {
+	    console.log("Request failed!");
+
+	});</code></pre>
+	                        </div>
+	                    </div>
+	                </section>
+	            </section>
+	            <section class="stack">
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 246px; height: auto;">
+	                        <div style="z-index: 11;" class="sl-block-content">
+	                            <h2>Service workers</h2>
+	                        </div>
+	                    </div>
+	                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;" data-block-type="text" class="sl-block">
+	                        <div style="z-index: 12;" class="sl-block-content">
+	                            <h4>the hands-on experience</h4>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+	                        <div style="z-index: 10;" class="sl-block-content">
+	                            <h3>USAGE</h3>
+	                        </div>
+	                    </div>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;">
+	                        <div style="z-index: 11;" class="sl-block-content">
+	                            <ul>
+	                                <li>Installing / updating service workers</li>
+	                                <li>Caching assets</li>
+	                                <li>Fetching and serving resources</li>
+	                                <li>Support (Chrome, Firefox - desktop &amp; mobile)</li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 515px;" data-block-type="text" class="sl-block">
+	                        <div data-has-custom-html="" style="z-index: 13;" class="sl-block-content">
+	                            <p>
+	                                <span style="font-size:20px">
+	                                    <a href="http://jakearchibald.com/2014/using-serviceworker-today/" target="_blank">Introductory article by Jake Archibald</a>
+	                                </span>
+	                            </p>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 105px; height: auto;">
+	                        <div style="z-index: 10;" class="sl-block-content">
+	                            <h2>Registering</h2>
+	                        </div>
+	                    </div>
+	                    <div style="min-width: 30px; min-height: 30px; width: 538px; height: 362px; left: 211px; top: 210px;" data-block-type="code" class="sl-block">
+	                        <div style="z-index: 12; font-size: 90%;" class="sl-block-content">
+	                            <pre class="javascript">
+	                                <code>// Note: ONLY HTTPS!
+	navigator.serviceWorker.register('/serviceworker.js', {
+
+	  // Service Worker events are scoped
+	  // to this subfolder only
+	  scope: '/trained-to-thrill/'
+
+	}).then(function(reg) {
+	  console.log('Service Worker on line!');
+
+	}, function(err) {
+	  console.log('Oops, Service Worker installation failed!');
+
+	});</code></pre>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 100px; height: auto;">
+	                        <div style="z-index: 10;" class="sl-block-content">
+	                            <h2>
+	                                <span style="font-size:48px">the&nbsp; </span>Serviceworker.js
+	                            </h2>
+	                        </div>
+	                    </div>
+	                    <div style="min-width: 30px; min-height: 30px; width: 538px; height: 362px; left: 211px; top: 210px;" data-block-type="code" class="sl-block">
+	                        <div style="z-index: 11; font-size: 90%;" class="sl-block-content">
+	                            <pre class="javascript">
+	                                <code>// The SW will be shutdown when not in use to save memory,
+	// be aware that any global state is likely to disappear
+
+	console.log("SW startup");
+
+	self.addEventListener('install', function(event) {
+	  console.log("SW installed");
+	});
+
+	self.addEventListener('activate', function(event) {
+	  console.log("SW activated");
+	});
+
+	self.addEventListener('fetch', function(event) {
+	  console.log("Caught a fetch!");
+	  event.respondWith(new Response("Hello world!"));
+	});</code></pre>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 100px; height: auto;">
+	                        <div style="z-index: 11;" class="sl-block-content">
+	                            <h2>UPDATING &amp; REPLACING</h2>
+	                            <p>&nbsp;</p>
+	                            <p>&nbsp;</p>
+	                        </div>
+	                    </div>
+	                    <div style="min-width: 30px; min-height: 30px; width: 538px; height: 384px; left: 211px; top: 209px;" data-block-type="code" class="sl-block">
+	                        <div style="z-index: 12; font-size: 90%;" class="sl-block-content">
+	                            <pre class="javascript">
+	                                <code>// Installation
+	self.addEventListener('install', function(event) {
+	  console.log("Installing…");
+
+	  event.waitUntil(
+	    somethingThatReturnsAPromise().then(function() {
+	      console.log("Installed!");
+	    })
+	  );
+	});
+
+	// Activation
+	self.addEventListener('activate', function(event) {
+	  console.log("Activating…");
+
+	  event.waitUntil(
+	    somethingThatReturnsAPromise().then(function() {
+	      console.log("Activated!");
+	    })
+	  );
+	});</code></pre>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 100px; height: auto;">
+	                        <div style="z-index: 11;" class="sl-block-content">
+	                            <h2>Cached responses</h2>
+	                            <p>&nbsp;</p>
+	                        </div>
+	                    </div>
+	                    <div style="min-width: 30px; min-height: 30px; width: 538px; height: 384px; left: 211px; top: 209px;" data-block-type="code" class="sl-block">
+	                        <div style="z-index: 12; font-size: 80%;" class="sl-block-content">
+	                            <pre class="javascript">
+	                                <code>importScripts('serviceworker-cache-polyfill.js');
+
+	self.addEventListener('install', function(event) {
+	  // pre cache a load of stuff:
+	  event.waitUntil(
+	    cachesPolyfill.open('myapp-static-v1').then(function(cache) {
+	      return cache.addAll([
+	        '/',
+	        '/styles/all.css',
+	        '/styles/imgs/bg.png',
+	        '/scripts/all.js'
+	      ]);
+	    })
+	  )
+	});
+
+	self.addEventListener('fetch', function(event) {
+	  event.respondWith(
+	    cachesPolyfill.match(event.request).then(function(response) {
+	      return response || fetch(event.request);
+	    })
+	  );
+	});</code></pre>
+	                        </div>
+	                    </div>
+	                </section>
+	            </section>
+	            <section class="stack">
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 246px; height: auto;">
+	                        <div style="z-index: 11;" class="sl-block-content">
+	                            <h2>NOT JUST OFFLINE</h2>
+	                        </div>
+	                    </div>
+	                    <div style="height: auto; width: 600px; left: 180px; top: 331px;" data-block-type="text" class="sl-block">
+	                        <div style="z-index: 12;" class="sl-block-content">
+	                            <h4>Every byte not transferred
+	                                <br/>
+	is a byte saved!
+	                            </h4>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div style="min-width: 30px; min-height: 30px; width: 518px; height: 395px; left: 221px; top: 83px;" data-block-type="iframe" class="sl-block">
+	                        <div style="z-index: 11;" class="sl-block-content">
+	                            <iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock" data-src="//www.youtube.com/embed/px-J9Ghvcx4?enablejsapi=1" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen=""></iframe>
+	                        </div>
+	                    </div>
+	                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 501px;" data-block-type="text" class="sl-block">
+	                        <div style="z-index: 12;" class="sl-block-content">
+	                            <p>
+	                                <span style="font-size:20px">
+	                                    <a href="http://jakearchibald.com/2014/using-serviceworker-today/" target="_blank">Using ServiceWorker in Chrome today - by Jake Archibald</a>
+	                                </span>
+	                            </p>
+	                        </div>
+	                    </div>
+	                </section>
+	            </section>
+	            <section class="stack">
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 243px; height: auto;">
+	                        <div class="sl-block-content">
+	                            <h2>
+	                                <a href="https://jakearchibald.github.io/isserviceworkerready/" target="_blank">
+	                                    <span style="font-size:48px">So how long until I can</span> actually use this?
+
+	                                </a>
+	                            </h2>
+	                        </div>
+	                    </div>
+	                </section>
+	                <section>
+	                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;">
+	                        <div style="z-index: 10;" class="sl-block-content">
+	                            <h2>the future</h2>
+	                        </div>
+	                    </div>
+	                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;" data-block-type="text" class="sl-block">
+	                        <div style="z-index: 12;" class="sl-block-content">
+	                            <h4>geofencing, background sync and push</h4>
+	                        </div>
+	                    </div>
+	                </section>
+	            </section>
+
+	            <section>
+					<!-- blank slide to remind you that slide deck has ended,
+					     if you are continuing with another slide deck, switch now,
+						 otherwise skip the empty slide to the goodbye page
+					-->
+	            </section>
+
+	            <section>
+                    <h2>Thank You!</h2>
+
+					<h4>Questions?</h4>
+
+					<p>
+                    	<code data-dynamic style="text-align:center; font-size: 1.25em; font-weight: bold;">{presentation.url}</code>
+					</p>
+
+                    <h4>
+						<a data-dynamic href="{contact.url}" target="_blank">{contact.name}</a>
+						<br/>
+						<span data-dynamic>{presentation.date}</span>
+                    </h4>
+	            </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

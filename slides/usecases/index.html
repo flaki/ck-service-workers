@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+
+		<!-- Mozilla/Firefox OS theme -->
+		<link rel="stylesheet" href="css/theme/moz-dark.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style type="text/css">
+		.reveal blockquote {
+			padding: .5em;
+			margin 0;
+			width: 100%;
+			font-size: .5em;
+			text-align: left;
+			opacity: .66;
+		}
+		</style>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+				<section>
+				<h1 id="service-worker">Service Worker</h1>
+				<h2 id="use-cases">Use cases</h2>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h3 id="service-workers-are-a-lot-of-things">Service workers are a lot of things</h3>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h1 id="offline">Offline</h1>
+				<ul>
+				<li>Offline webapps</li>
+				<li>Replacing AppCache</li>
+				<li>More control, less surprises</li>
+				<li>&quot;Scriptable proxy&quot;</li>
+				</ul>
+				<blockquote>
+				<p>This is probably the first thing you have heard of (/going to hear). Service workers (by those, who have heard of them, at least), are mostly known for being a replacement for AppCache, and bringing offline support for web applications. Some developers tend to respond to this by &quot;we already have AppCache and it works all right&quot;, but truth is, several quirks and footguns await for those who dare to try to enhance their app with offline support by using AppCache. The declarative manifest file might also seem easier to handle, but the lack of flexibility that stems from this declarative nature makes it pretty hard to accomplish more complicated offline functionality.
+				Service workers come in at this point, providing a lot of key basic principles (some of them just being specced, either as part of the specification (Cache API), or outside of it (Fetch, URL, Storage API)). These key princibles/building blocks and their well-defined interactions make it possible for web developers to expand on the platform-provided functionalities to their own liking, accomplishing their own needs.</p>
+				</blockquote>
+				</section>
+
+				<section>
+				<h1 id="diving-into">Diving into</h1>
+				<h2 id="offline-support-with-service-workers">Offline support with service workers</h2>
+				<ul>
+				<li>Adding offline support &amp; best practices</li>
+				<li>Hands on</li>
+				</ul>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h1 id="performance-boost">Performance boost</h1>
+				<ul>
+				<li>Great control over caching mechanism</li>
+				<li>On-demand &amp; pre-caching of resources</li>
+				<li>Intuitive cache busting</li>
+				<li>Protections against being &quot;stuck&quot;</li>
+				</ul>
+				<blockquote>
+				<p>Even if your webapp doesn&#39;t need offline functionality (it&#39;s based around a service, so it needs to be online to be useful - a bit more on this later), you might still benefit from having a service worker. Just as you&#39;d benefit from a properly set-up AppCache manifest, or even properly set up caching headers, you could use service workers to enhance your application&#39;s performance, user experience.
+				Caching assets, precaching predictable pages/paths, offlining data and providing local &quot;autocomplete&quot; results and cached older feed entries until networked API requests complete are all improving the real and <em>percieved</em> performance of your application, both being incredibly important from your prospective user&#39;s viewpoint.
+				Through smart caching, moving computation to the client side, prediction and other methods it is not only your user&#39;s experience you are improving on -- but you are saving network bandwith, server load and on the long run improving user experience (due to improved responsiveness of the less burdened server ecosystem) by spending less.</p>
+				</blockquote>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h1 id="background-sync">Background Sync</h1>
+				</section>
+
+				<section>
+				<h1 id="what-does-it-even-mean-">What does it even mean?</h1>
+				<h4 id="-to-be-offline-">...to be offline?</h4>
+				<ul>
+				<li>What does it mean to be &quot;offline&quot;?</li>
+				<li>Lie-fi</li>
+				<li>Offline-first</li>
+				</ul>
+				<blockquote>
+				<p>What does offline mean? Operator&#39;s network being down due to hailstorm? Hiking at Mount Etna? Flying above the Antarctica in a wingsuit? Well offline could be caused by anything. Large metallic structures, overloaded networks, underground, bad reception... What&#39;s even worse is being &quot;barely online&quot;. Crappy internet - as said by Matthew Inman of The Oatmeal - is <em>way-way-way</em> worse than no internet. You are <em>seemingly</em> online, but your phone can not send. Your e-mail ends up unsent, your tweet garbled, your photo half-uploaded. Apps mostly handle these situations, but webapps just tend to beachball endlessly in a never-ending throbber you can not even cancel, unless realoading the page, which then, of course will get rid of all the formdata you painstakingly just typed.
+				<em>ARGH</em>. Yes, it&#39;s frustrating - that&#39;s exactly why you should make your (web)apps offline first? Writing a tweet? Save it! Save it often. Send it when there is (good) connection. Posting an image? Save it. Did it fail to upload? Try it again later a few times, maybe it was just an intermittent interruption in the network.</p>
+				</blockquote>
+				</section>
+
+				<section>
+				<h1 id="background-sync-api">Background Sync API</h1>
+				<ul>
+				<li>Experimental API</li>
+				<li>Gives you an &quot;inbox/outbox&quot;</li>
+				<li>Lets you sync your data</li>
+				<li>Scheduled syncs</li>
+				<li>Server/user initiated syncs</li>
+				</ul>
+				<blockquote>
+				<p>The Background Sync API lets you do all those above which are implemented in (better) proprietary apps: it provides you with the primitives to easily store data until it could be delivered, also serves as an inbox for your incoming data. Data inbox/outboxes are synchronized on select intervals automatically, request from the user or to a server-sent event (generally, a Push message). All the primitives are created to make sure no data loss could occur.</p>
+				</blockquote>
+				</section>
+
+				<section>
+				<h1 id="diving-into">Diving into</h1>
+				<h2 id="background-sync">Background sync</h2>
+				<ul>
+				<li>Background sync in practice</li>
+				</ul>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h1 id="push-notifications">Push Notifications</h1>
+				<ul>
+				<li>Responding to server-sent events</li>
+				<li>Can be used with<ul>
+				<li>Notification API</li>
+				<li>Background Sync API</li>
+				</ul>
+				</li>
+				</ul>
+				<blockquote>
+				<p>Network information transfer is hard. You could keep a connection open, and poll a server, but that&#39;s going to have adverse effects on your battery life and dataplan. Push Notifications help you receive timely events from your server, &quot;pings&quot;, that new information is at your service. You could then respond by showing pop-up notifications, or starting a new data sync, keeping your webapp (and its user) up to date.</p>
+				</blockquote>
+				</section>
+
+				<section>
+				<h1 id="diving-into">Diving into</h1>
+				<h2 id="push-notifications">Push notifications</h2>
+				<ul>
+				<li>Push notifications in practice</li>
+				</ul>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h1 id="whatever-you-make-of-them">Whatever you make of them</h1>
+				<ul>
+				<li>Polyfilling future web features?</li>
+				<li>API emulation &amp; proxying?</li>
+				<li>Render caching &amp; performance upgrade?</li>
+				<li>Geofencing?</li>
+				</ul>
+				<blockquote>
+				<p>Whether it is polyfilling future web platform features (see the workshop on creating your on service worker!), emulating remote APIs, optimizing application load, rendering and localization like Firefox OS does or Geofencing (which is a new experimental spec, based on service workers) -- service workers are just laying the groundwork. They are scriptable proxies, a &quot;bedrock API&quot;, exposing the &quot;magic&quot; behind your daily browsing (network fetches, caching...). A primitive you could use to &quot;roll your own&quot; solution. Of course, &quot;with great power comes great responsibility&quot; - spec authors and browser implementors try very make sure nothing could go wrong, and the API could not be abused, but you should take care and use these powerful tools responsibly.</p>
+				</blockquote>
+				</section>
+				</section>
+
+				<section>
+				<section>
+				<h3 id="a-word-on">A word on</h3>
+				<h1 id="progressive-enhancement">Progressive enhancement</h1>
+				<ul>
+				<li>You can use this, now</li>
+				<li>But you shouldn&#39;t rely on it<ul>
+				<li>Might not be available</li>
+				<li>Could break anytime</li>
+				</ul>
+				</li>
+				<li>Use Progressive Enhancement<ul>
+				<li>Feature detect!</li>
+				<li>Add SW as an enhancement</li>
+				<li>for users who already have it</li>
+				<li>do not rely on it</li>
+				</ul>
+				</li>
+				</ul>
+				<blockquote>
+				<p>Service workers are a new and experimental technology. But it&#39;s already shipping in some browsers (Chrome has some of the API since early 2015 shipping in stable). That also means the feature is unavailable for a lot of the users who are going to use your webapp or website. You should provide fallbacks for these users -- even so, you should <strong>build</strong> for these users, and provide SW-based functionalities to users who could take it, so nobody is left behind or staring to a white blank window.
+				Make sure you do feature detection, and not browser sniffing to decide who to provide the enhanced experience with, so new browsers joining in the future could <em>automagically</em> have the new experience from day one of their release!
+				Service workers are also unstable. That means, even if you use them, be prepared that sometime they could break, or change in ways you haven&#39;t accepted. Breaking could not really be circumvented, young volatile APIs tend to be a bit on the brittle side of the spectrum. Be prepared. Also, follow the specification, as it could change in ways that require you to modify the application. These breaking changes are rare, but certainly not non-existent.</p>
+				</blockquote>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
