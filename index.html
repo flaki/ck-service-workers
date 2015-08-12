@@ -40,24 +40,39 @@ Submit any issues or pull requests against the <a href="https://github.com/flaki
 
 <ul>
     <li>What hardware and software will the presenter need?</li>
-    <li>For example
       <ul>
-        <li>Modern browsers, text editor?</li>
-        <li>Python or Node installed?</li>
-        <li>Instructions for projecting your device's screen (USB webcam, document camera, etc.)</li>
-        <li>Correct USB cable for the device</li>
-        <li>Remote debugging enabled for phone demos</li>
+        <li>Slide decks are in HTML5 format, should be presentable on a recent browser in all 3 mayor operating systems</li>
+        <li>Speaker will need an entry-level PC (tablet should work fine also!) hooked up to a display/projector</li>
+        <li>Workshop: participants should have a personal computer, preferably running Linux or OSX</li>
+        <li><strong>Network</strong><ul>
+          <li>Most of the slides should work without internet connection.</li>
+          <li>Embedded online content might be omitted (e.g. except external videos, tweets, etc.)</li>
+          <li>Some small parts of the workshop might require internet connection</li>
+        </ul></li>
+      </ul>
+    <li>What knowledge and background will the presenter most likely need?</li>
+      <ul>
+        <li>Basic knowledge of the web, web development should be sufficient</li>
+        <li>For dive-in parts and worshops, basic JavaScript &amp; Web Development skills</li>
       </ul>
     </li>
-    <li>What knowledge and background will the presenter most likely need?</li>
 </ul>
 
 
 <h2>What should the audience have?</h2>
 
 <ul>
-    <li>What hardware and software will the audience need?</li>
-    <li>What knowledge and background is the audience recommended to have? For beginner level kits, please include even basics like understanding how to write a simple web page or understanding how to use an editor.</li>
+    <li>What hardware and software will the audience need?<ul>
+      <li>Workshoppers will need:</li>
+      <li>A PC to code on, preferably *nix based, like Mac OSX or Unix.</li>
+      <li>Git, Node.js should be installed</li>
+    </li>
+    <li>What knowledge and background is the audience recommended have?<ul>
+      <li>Basic web &amp; technology skills for attendees at nontechical talks</li>
+      <li>JavaScript (intermediate) and web developer skills (basic) for technical talks, workshops</li>
+      <li>Clear understanding of closures, callbacks, promises to work with service worker code</li>
+    </li>
+  </ul>
 </ul>
 
 <h2>Learning objectives</h2>
@@ -74,7 +89,8 @@ Submit any issues or pull requests against the <a href="https://github.com/flaki
   </li>
   <li>Deep-dive modules could be then used to elaborate on a subject matter like (for audiences familiar with code)
     <ul>
-      <li></li>
+      <li>Showcase possible service worker use cases</li>
+      <li>Urge users to experiment with service workers</li>
     </ul>
   </li>
 </ul>
@@ -94,45 +110,52 @@ Submit any issues or pull requests against the <a href="https://github.com/flaki
 
     <ul>
         <li>Docs: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">MDN</a></li>
-        <li>Specification: <a href="#https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html">Service Workers</a></li>
+        <li>Specification: <a href="https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html">Service Workers</a></li>
         <li>Tutorial: <a href="http://www.html5rocks.com/en/tutorials/service-worker/introduction/">Introduction to Service Worker</a></li>
         <li>Implementation status: <a href="https://jakearchibald.github.io/isserviceworkerready/">isServiceWorkerReady?</a></li>
         <li>Service worker news: <a href="https://twitter.com/service_workers">@service_workers</a></li>
     </ul>
 
+<h2>Module sources</h2>
+
+    <ul>
+      <li>Edit these to modify slide decks:</li>
+      <li><a>Intro</a></li>
+      <li><a href="https://github.com/flaki/ck-service-workers/blob/gh-pages/source/SW_USE_CASES.md">Use cases</a></li>
+      <li><a>Workshop: Roll your own SW</a></li>
+    </ul>
 
 <h2>Presentation setup</h2>
 
 <ul>
-  <li>Link to slides</li>
-  <li>Links to videos of the presentation materials being used (optional)</li>
+  <li><a href="slides/intro/">Intro</a> (mildly technical, 5 to 15 mins)</li>
+  <li><a href="slides/usecases">Use cases</a>(mild to heavily technical, up to 45 mins, incl. coding)</li>
+  <li><a>Workshop: Roll your own SW</a> (heavily technical, 60 to 90 mins, live coding, live snippets)</li>
 </ul>
 
-<p>Include notes here on presenting or using the materials</p>
-
-<h2>Demo setup</h2>
+<h2>Demos</h2>
 
 <ul>
   <li>Link to demos</li>
   <li>Demo script:
     <ul>
-      <li>A walkthrough of how to run the demo</li>
-      <li>Main points to make</li>
+      <li><strong>BPG to JPG image format converter/polyfill</strong></li>
+      <li><a href="https://github.com/flaki/bpg2jpg/">Source code</a></li>
+      <li>Synchronous content-js BPG polyfill demo: <a href="https://flaki.github.io/bpg2jpg/test.html">test.html</a></li>
+      <li>Transparent service-worker BPG polyfill demo: <a href="https://flaki.github.io/bpg2jpg/test-sw.html">test-sw.html</a></li>
     </ul>
   </li>
   <li>Troubleshooting:
     <ul>
-      <li>Things that might be broken</li>
-      <li>Things that might be broken</li>
+      <li>Something doesn't work in Firefox's service worker support? Try asking in #content on IRC.</li>
+      <li>Something doesn't work in Chrome's service worker support? Try <a href="https://twitter.com/jaffathecake">pinging Jake Archibald</a> on twitter.</li>
     </ul>
   </li>
-  <li>Links to videos of the demos being used</li>
-  <li>Instructions for how to give the demo offline</li>
 </ul>
 
 <h2>Active learning</h2>
 
-<p>If possible, include some kind of active learning mechanism in your content kit slides, to break up the presentation a bit. This may include links to demos that the audience can play with, live coding sections, demos that include participation from the audience, etc.</p>
+<p></p>
 
 <h2>Frequently asked questions (FAQs)</h2>
 
@@ -141,7 +164,7 @@ Refer to the <a href="faq.html">FAQ section</a>.
 </p>
 
 <p>
-To add your own answers from your previous experiences, submit a pull request to the 
+To add your own answers from your previous experiences, submit a pull request to the
 <a href="https://github.com/flaki/ck-service-workers/blob/gh-pages/FAQ.md">FAQ.md</a> file,
 or ask your own questions in the <a href="https://github.com/flaki/ck-service-workers">issues section</a>.
 </p>
